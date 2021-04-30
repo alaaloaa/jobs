@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use SkillsTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(SkillsTableSeeder::class);
+        $this->call(SkillsTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
         \App\Models\User::factory(50)->create();
         \App\Models\Job::factory(50)->create();
