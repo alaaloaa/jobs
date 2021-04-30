@@ -15,7 +15,7 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned()->default(1);
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('name');
             $table->string('title');
             $table->text('description');
