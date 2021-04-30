@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SkillsTableSeeder extends Seeder
 {
@@ -62,7 +63,7 @@ class SkillsTableSeeder extends Seeder
     public function run()
     {
         foreach ($this->skills as $skill) {
-            Skill::create([
+            DB::table('skills')->insert([
                 'name' => $skill,
             ]);
         }

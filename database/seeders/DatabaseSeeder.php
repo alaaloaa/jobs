@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use SkillsTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
