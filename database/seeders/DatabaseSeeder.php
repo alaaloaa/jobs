@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(skillsTableSeeder::class);
+        // $this->call(SkillsTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
         \App\Models\User::factory(50)->create();
         \App\Models\Job::factory(50)->create();
