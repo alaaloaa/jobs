@@ -94,7 +94,7 @@ class JobFactory extends Factory
             'companyName' => $this->faker->company,
             'aboutCompany' => $this->faker->text(500),
             'salary' => $this->faker->numberBetween($min = 100, $max = 3000),
-            'logo' => $this->faker->image('public', 400, 300, 'Company Logo', false),
+            'logo' => $this->faker->image('public', 400, 300, 'Company Logo'),
             'status' => $this->faker->numberBetween($min = 0, $max = 1),
             'created_at' => $this->faker->dateTimeBetween($startDate = '-30 days', $endDate = 'now'),
         ];
