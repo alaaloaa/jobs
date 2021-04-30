@@ -66,6 +66,8 @@ class User extends Authenticatable
             $path = str_replace('public/storage/images/fake', 'storage/images/fake', $value);
         } else if (str_contains($value, 'public/images')) {
             $path = str_replace('public/images', 'storage/images', $value);
+        } else {
+            $path = $value;
         }
 
         $this->attributes['avatar'] = $path;
