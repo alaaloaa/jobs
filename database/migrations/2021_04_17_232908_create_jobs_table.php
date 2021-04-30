@@ -23,7 +23,7 @@ class CreateJobsTable extends Migration
             $table->text('qualifications');
             $table->string('country');
             $table->json('experience');
-            $table->json('skills');
+            $table->text('skills');
             $table->enum('type', ['Full Time', 'Part Time']);
             $table->string('companyName');
             $table->integer('salary');
