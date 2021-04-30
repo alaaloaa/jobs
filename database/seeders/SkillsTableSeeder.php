@@ -63,7 +63,7 @@ class SkillsTableSeeder extends Seeder
     public function run()
     {
         foreach ($this->skills as $skill) {
-            DB::table('skills')->insert([
+            \DB::table('skills')->insert([
                 'name' => $skill,
             ]);
         }
