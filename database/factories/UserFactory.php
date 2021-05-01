@@ -93,7 +93,7 @@ class UserFactory extends Factory
             'country' => $this->faker->country,
             'info' => $this->faker->text(500),
             'skills' => $skillsData,
-            'avatar' => $this->faker->image,
+            'avatar' => $this->faker->image('public/storage/images/fake/users', 400, 300, "Profile Picture"),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ];
