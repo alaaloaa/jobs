@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
  */
 
 /* sign in / up Routes */
-Route::post('auth/register', 'Auth\RegisterController@register');
-Route::post('auth/login', 'Auth\LoginController@login');
+Route::post('auth/register', 'Auth\RegisteredUserController@store');
+Route::post('auth/login', 'Auth\AuthenticatedSessionController@store');
 
 Route::get('/user', 'HomeController@store');
 
