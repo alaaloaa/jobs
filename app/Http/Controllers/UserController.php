@@ -73,7 +73,7 @@ class UserController extends Controller
         if ($request->hasFile('avatar') && !empty($request->file('avatar'))) {
             if (!empty($user->avatar)) {
                 $path = str_replace(url('/storage'), 'storage', $user->avatar); // get old logo path
-                unlink(storage_path($path));
+                // unlink(storage_path($path));
 
                 // unlink($path); // delete old pic
             }
