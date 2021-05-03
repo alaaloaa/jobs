@@ -104,7 +104,7 @@ class JobController extends Controller
         $job = Job::with(['user:id,name,job,info,avatar', 'bookmarks', 'applies'])->find($job->id);
         $similarJobs = [];
         foreach ($job->skills as $skill) {
-            $similarJobs[] = Job::whereJsonContains('skills', $skill)->where('id', '<>', $job->id)->get();
+            $similarJobs[] = Job::where('skills', 'like', '%' . $skill . '%')->where('id', '<>', $job->id)->get();
         }
         return response()->json(['job' => $job, 'similarJobs' => $similarJobs[0]]);
     }
