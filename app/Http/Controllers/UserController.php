@@ -72,12 +72,12 @@ class UserController extends Controller
         ]);
         $user->update($request->except('avatar'));
         if ($request->hasFile('avatar') && !empty($request->file('avatar'))) {
-            if (!empty($user->avatar)) {
-                $path = str_replace(url('/storage'), 'storage', $user->avatar); // get old logo path
-                // unlink(storage_path($path));
+            // if (!empty($user->avatar)) {
+            //     $path = str_replace(url('/storage'), 'storage', $user->avatar); // get old logo path
+            //     // unlink(storage_path($path));
 
-                // unlink($path); // delete old pic
-            }
+            //     // unlink($path); // delete old pic
+            // }
             // $path = Storage::disk('s3')->put('images/users', $request->file('avatar'));
 
             $path = $request->file('avatar')->store('images/users', 's3');
