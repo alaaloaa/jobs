@@ -80,7 +80,7 @@ class UserController extends Controller
             // }
             // $path = Storage::disk('s3')->put('images/users', $request->file('avatar'));
 
-            $path = $request->file('avatar')->store('images/users', 's3');
+            $path = $request->file('avatar')->store('avatars', 's3');
             $user->avatar = Storage::disk('s3')->url($path);
             $user->save();
         }
