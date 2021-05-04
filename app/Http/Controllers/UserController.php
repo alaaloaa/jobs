@@ -6,6 +6,7 @@ use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -77,6 +78,8 @@ class UserController extends Controller
 
                 // unlink($path); // delete old pic
             }
+            Storage::disk('s3')->put('avatars/1', $request->file('avatar'));
+
             $path = $request->file('avatar')->store('public/images/users');
             $user->avatar = $path;
             $user->save();
