@@ -55,10 +55,10 @@ class User extends Authenticatable
         return $query->orderBy('id', 'DESC');
     }
 
-    // public function getAvatarAttribute($avatar)
-    // {
-    //     return $avatar ? url($avatar) : url('/storage/images/profile-pic.jpg');
-    // }
+    public function getAvatarAttribute($avatar)
+    {
+        return $avatar ? $avatar : 'https://wuzzufny-laravel-site.s3.us-east-2.amazonaws.com/images/default.jpg';
+    }
 
     // public function setAvatarAttribute($value)
     // {

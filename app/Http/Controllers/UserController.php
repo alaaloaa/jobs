@@ -72,17 +72,13 @@ class UserController extends Controller
         ]);
         $user->update($request->except('avatar'));
         if ($request->hasFile('avatar') && !empty($request->file('avatar'))) {
-            // if (!empty($user->avatar)) {
-            //     $path = str_replace(url('/storage'), 'storage', $user->avatar); // get old logo path
-            //     // unlink(storage_path($path));
-
-            //     // unlink($path); // delete old pic
-            // }
-            Storage::disk('s3')->put('avatars/1', $request->file('avatar'));
-
-            // $request->file('avatar')->store('avatars', 's3');
-            // $user->avatar = Storage::disk('s3')->url($path);
-            // $user->save();
+            if (!empty($user->avatar)) {
+                $file_path = parse_url($user->avatar);
+                Storage::disk('s3')->delete($file_path); // delete old pic
+            }
+            $path = $request->file('avatar')->store('images/users', 's3');
+            $user->avatar = Storage::disk('s3')->url($path);
+            $user->save();
         }
         return response()->json(['user' => $user, 'msg' => 'You updated your profile successfully']);
     }

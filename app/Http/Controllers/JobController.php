@@ -7,6 +7,7 @@ use App\Models\Bookmark;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class JobController extends Controller
@@ -75,9 +76,10 @@ class JobController extends Controller
         $request->merge(['user_id' => Auth::id()]);
         $job = Job::create($request->all());
         if ($request->hasFile('logo') && !empty($request->file('logo'))) {
-            $path = $request->file('logo')->store('public/images/jobs');
-            $job->logo = $path;
+            $path = $request->file('logo')->store('images/jobs', 's3');
+            $job->logo = Storage::disk('s3')->url($path);
             $job->save();
+
         }
         return response()->json(['job' => $job, 'msg' => 'You Created This job successfully']);
     }
@@ -163,11 +165,11 @@ class JobController extends Controller
             $job->update($request->except('logo'));
             if ($request->hasFile('logo') && !empty($request->file('logo'))) {
                 if (!empty($job->logo)) {
-                    $path = str_replace(url('/storage'), 'storage', $job->logo); // get old logo path
-                    unlink($path); // delete old pic
+                    $file_path = parse_url($job->logo);
+                    Storage::disk('s3')->delete($file_path); // delete old pic
                 }
-                $path = $request->file('logo')->store('public/images/jobs');
-                $job->logo = $path;
+                $path = $request->file('logo')->store('images/jobs', 's3');
+                $job->logo = Storage::disk('s3')->url($path);
                 $job->save();
             }
 

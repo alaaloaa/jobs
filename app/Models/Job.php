@@ -56,19 +56,19 @@ class Job extends Model
 
     public function getLogoAttribute($logo)
     {
-        return $logo ? url($logo) : url('/storage/images/profile-pic.jpg');
+        return $logo ? $logo : 'https://wuzzufny-laravel-site.s3.us-east-2.amazonaws.com/images/logo.jpg';
     }
 
-    public function setLogoAttribute($logo)
-    {
-        if (str_contains($logo, 'public/storage/images/fake')) {
-            $path = str_replace('public/storage/images/fake', 'storage/images/fake', $logo);
-        } else if (str_contains($logo, 'public/images/')) {
-            $path = str_replace('public/images', 'storage/images', $logo);
-        } else {
-            $path = $logo;
-        }
-        $this->attributes['logo'] = $path;
-    }
+    // public function setLogoAttribute($logo)
+    // {
+    //     if (str_contains($logo, 'public/storage/images/fake')) {
+    //         $path = str_replace('public/storage/images/fake', 'storage/images/fake', $logo);
+    //     } else if (str_contains($logo, 'public/images/')) {
+    //         $path = str_replace('public/images', 'storage/images', $logo);
+    //     } else {
+    //         $path = $logo;
+    //     }
+    //     $this->attributes['logo'] = $path;
+    // }
 
 }
