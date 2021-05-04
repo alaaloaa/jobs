@@ -55,22 +55,22 @@ class User extends Authenticatable
         return $query->orderBy('id', 'DESC');
     }
 
-    public function getAvatarAttribute($avatar)
-    {
-        return $avatar ? url($avatar) : url('/storage/images/profile-pic.jpg');
-    }
+    // public function getAvatarAttribute($avatar)
+    // {
+    //     return $avatar ? url($avatar) : url('/storage/images/profile-pic.jpg');
+    // }
 
-    public function setAvatarAttribute($value)
-    {
-        if (str_contains($value, 'public/storage/images/fake')) {
-            $path = str_replace('public/storage/images/fake', 'storage/images/fake', $value);
-        } else if (str_contains($value, 'public/images')) {
-            $path = str_replace('public/images', 'storage/images', $value);
-        } else {
-            $path = $value;
-        }
+    // public function setAvatarAttribute($value)
+    // {
+    //     if (str_contains($value, 'public/storage/images/fake')) {
+    //         $path = str_replace('public/storage/images/fake', 'storage/images/fake', $value);
+    //     } else if (str_contains($value, 'public/images')) {
+    //         $path = str_replace('public/images', 'storage/images', $value);
+    //     } else {
+    //         $path = $value;
+    //     }
 
-        $this->attributes['avatar'] = $path;
-    }
+    //     $this->attributes['avatar'] = $path;
+    // }
 
 }
