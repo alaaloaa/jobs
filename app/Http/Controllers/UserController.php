@@ -78,9 +78,9 @@ class UserController extends Controller
 
                 // unlink($path); // delete old pic
             }
-            Storage::disk('s3')->put('avatars/1', $request->file('avatar'));
+            $path = Storage::disk('s3')->put('images/users', $request->file('avatar'));
 
-            $path = $request->file('avatar')->store('public/images/users');
+            // $path = $request->file('avatar')->store('public/images/users');
             $user->avatar = $path;
             $user->save();
         }
