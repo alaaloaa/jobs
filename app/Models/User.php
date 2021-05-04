@@ -57,7 +57,7 @@ class User extends Authenticatable
 
     public function getAvatarAttribute($avatar)
     {
-        return $avatar ? $avatar : 'https://wuzzufny-laravel-site.s3.us-east-2.amazonaws.com/images/default.jpg';
+        return $avatar ? $avatar : 'https://wuzzufny-laravel-site.s3.us-east-2.amazonaws.com/images/profile-pic.jpg';
     }
 
     // public function setAvatarAttribute($value)
