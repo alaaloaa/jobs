@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(SkillsTableSeeder::class);
-        // $this->call(CountriesTableSeeder::class);
-        // \App\Models\User::factory(5)->create();
-        \App\Models\Job::factory(5)->create();
+        $this->call(SkillsTableSeeder::class);
+        $this->call(CountriesTableSeeder::class);
+        \App\Models\User::factory(50)->create();
+        \App\Models\Job::factory(50)->create();
         // \App\Models\Job::factory(40)->create();
 
     }
